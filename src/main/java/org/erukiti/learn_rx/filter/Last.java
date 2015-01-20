@@ -1,28 +1,27 @@
-package org.erukiti.learn_rx;
+package org.erukiti.learn_rx.filter;
 
 import rx.Observable;
 
-
-public class First {
+public class Last {
     public static void main(String[] args) {
         /*
          * integer stream: 1-2-3-4-5-6-7-8-9-10-|
-         *                 v
-         *   taken stream: 1-|
+         *                                   v
+         *   taken stream: --------------8-9-10-|
          */
         Observable.range(1, 10)
-                .first()
+                .last()
                 .subscribe(s -> System.out.println(s));
 
         System.out.println("----");
 
         /*
-         * integer stream: 1-2-3-4-5-6-7-8-9-10-|
-         *                   v
-         *   taken stream: --2-|
+         *  integer stream: 1-2-3-4-5-6-7-8-9-10-|
+         *                                  v
+         * last odd stream: ----------------9----|
          */
         Observable.range(1, 10)
-                .first(n -> n % 2 == 0)
+                .last(n -> n % 2 == 1)
                 .subscribe(s -> System.out.println(s));
     }
 }

@@ -1,4 +1,4 @@
-package org.erukiti.learn_rx;
+package org.erukiti.learn_rx.filter;
 
 import rx.Observable;
 
